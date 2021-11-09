@@ -11,16 +11,39 @@ import UIKit
  */
 
 // 1
+//func printFullName(firstName: String, lastName: String) {
+//    print(firstName + lastName)
+//}
+
+// 강의
 func printFullName(firstName: String, lastName: String) {
-    print(firstName + lastName)
+    print("fullname is \(firstName) \(lastName)")
 }
 
+printFullName(firstName: "Jason", lastName: "Lee")
+
 // 2
-func printFullNameNoParameter(_ firstName: String, _ lastName: String) {
-    print(firstName + lastName)
+
+//func printFullNameNoParameter(_ firstName: String, _ lastName: String) {
+//    print(firstName + lastName)
+//}
+
+// 강의
+func printFullName(_ firstName: String, _ lastName: String) {
+    print("fullname is \(firstName) \(lastName)")
 }
+
+printFullName("Jason", "Lee")
 
 // 3
 func printFullNameNoParameter(_ firstName: String, _ lastName: String) -> String {
     return firstName + lastName
 }
+
+// 강의
+func fullName(firstName: String, lastName: String) -> String {
+    return "fullname is \(firstName) \(lastName)"
+}
+
+let name = fullName(firstName: "Jason", lastName: "Lee")
+print(name)
