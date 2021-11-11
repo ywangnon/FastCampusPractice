@@ -26,7 +26,7 @@
 
 
 
-### 03. Array 실습 - 1
+## 03. Array 실습 - 1
 
 ### 기본
 
@@ -101,7 +101,7 @@ var tenthItem = evenNumbers[9]
 
 
 
-### 04. Array 실습 - 2
+## 04. Array 실습 - 2
 
 ### range타입 사용
 
@@ -213,4 +213,123 @@ evenNumbers // 실제 배열은 변화 없다.
 - 특정인덱스 엘리먼트 접근
 
 - enumerated
+
+
+
+## 05. Dictionary 개념
+
+- Key -> Value 형태
+- Key는 유일한 값이어야 함
+- 순번이 아닌 키값으로 검색됨
+- 많은 사람들의 커피를 들고 갈때, 이름으로 표시해 놓는 것과 같음
+
+
+
+|           Array           |       Dictionary        |
+| :-----------------------: | :---------------------: |
+| 순서기반으로 찾을 때 유리 | 의미단위로 찾을 때 유리 |
+
+
+
+## 06. Dictionary 실습
+
+### 기본 표현
+
+```swift
+var scoreDic: [String: Int] = ["Jason": 80, "Jay": 95, "Jake": 90]
+
+var scoreDic: Dictionary<String, Int> = ["Jason": 80, "Jay": 95, "Jake": 90]
+```
+
+
+
+### 사용
+
+```swift
+scoreDic["Jason"]  // 80
+scoreDic["Jay"]   // 95
+scoreDic["Jerry"]  // nil
+
+// 값이 없을 수도 있기 때문에 옵셔널 바인딩으로 가져오면 안정적
+if let score = scoreDic["Jason"] {
+  score
+} else {
+  // ... score 없음
+}
+```
+
+
+
+
+
+### 빈 값
+
+```swift
+scoreDic = [:]
+```
+
+
+
+### 빈 값 확인
+
+```swift
+scoreDic.isEmpty
+```
+
+
+
+### 갯수 확인
+
+```swift
+scoreDic.count
+```
+
+
+
+### 기존 엘리먼트 업데이트
+
+```swift
+// 기존에 있는 값
+scoreDic["Jason"] = 99
+```
+
+
+
+### 추가
+
+```swift
+// 기본에 없는 값
+scoreDic["Jack"] = 100
+```
+
+
+
+### 사용자 제거
+
+```swift
+scoreDic["Jack"] = nil
+```
+
+
+
+### for Loop
+
+- 순서가 보장되지 않는다.
+
+```swift
+for (name, score) in scoreDic {
+  print("\(name), \(score)")
+}
+
+// 키 값만
+for key in scoreDic.keys {
+  print(key)
+}
+```
+
+
+
+
+
+
 
