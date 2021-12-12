@@ -50,11 +50,41 @@
 
 ## 06. 뷰컨트롤러 모달로 띄우기
 
+```swift
+    // UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("--> \(indexPath.row)")
+      // 1
+        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
+    }
+```
 
+- 1: 스토리보드에서 show Modaly로 segue 연결 후, performSegue 함수로 실행
 
 ## 07. 데이터 넘기기
 
+```swift
+    // segue하기 전에 미리 실행되어 준비하는 함수
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // DetailViewController 데이터 줄꺼예요
+        print("prepare segue")
+      // 1
+        if segue.identifier == "showDetail" {
+          // 2
+            let vc = segue.destination as? DetailViewController
+            
+            if let index = sender as? Int {
+                let bountyInfo = viewModel.bountyInfo(at: index)
+              // 3
+                vc?.viewModel.update(model: bountyInfo)
+            }
+        }
+    }
+```
 
+- 1: 세그 중 showDetail 로 명명된 세그 확인
+- 2: 세그 목적지를 DetailViewController 로 설정
+- 3: 목적지의 함수 중 update 실행
 
 ## 08. 코드 회고
 
@@ -71,3 +101,4 @@
 
 
 > 기술부채가 쌓이지 않도록 전략적으로 코딩을 짜야한다. -> 디자인패턴
+

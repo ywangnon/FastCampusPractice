@@ -329,6 +329,231 @@ for key in scoreDic.keys {
 
 
 
+## 07. Set 개념과 실습
+
+- 봉지 안에 각각 유일한 것들이 담긴 것
+- 중복이 없는 유니크한 엘리먼트 집합
+
+
+
+### 정의
+
+- 중복되도 중복이 제거된 채로 저장
+
+```swift
+var someArray: Array<Int> = [1, 2, 3, 4]
+
+var someSet: Set<Int> = [1, 2, 3, 1, 2]
+```
+
+
+
+### nil 체크
+
+```swift
+someSet.isEmpty
+```
+
+
+
+### 갯수
+
+```swift
+someSet.count
+```
+
+
+
+### 엘리먼트 포함 유무
+
+```swift
+someSet.contains(4)
+someSet.contains(1)
+```
+
+
+
+### 엘리먼트 추가
+
+```swift
+someSet.insert(5)
+```
+
+
+
+### 삭제
+
+```swift
+someSet.remove(1)
+```
+
+
+
+## 08. Closure 개념과 실습
+
+- 이름이 없는 메소드(함수)
+- 함수는 Closure의 한가지 타입
+- Closure 종류
+  - Global 함수
+  - Nested 함수
+  - Closure Expressions
+
+
+
+|   Function(Global)   |          Closure          |
+| :------------------: | :-----------------------: |
+|    이름 **있다**.    |      이름 **없다**.       |
+| Func 키워드 **필요** | Func 키워드 **필요 없음** |
+|  인자 받을 수 있다.  |                           |
+|     값 리턴 가능     |                           |
+|   변수로 할당 가능   |                           |
+|   First Class Type   |                           |
+
+
+
+### First Class Type?
+
+- 변수로 할당 가능
+- 인자로 받기 가능
+- 리턴 가능
+
+
+
+## 09. Capturing Values
+
+- 안쪽 스코프(scope)는 바깥쪽 스코프를 접근 가능하지만, 바깥쪽 스코프는 안쪽 스코프에 접근 불가
+
+```swift
+{
+  // 바깥 scope
+  let numOutside = 3
+  if true {
+    // 안쪽 scope
+    let numInside = 5
+    print(numOutside, numInside)
+  }
+  print(numOutside, numInside) // numInside 접근 불가로 오류
+}
+```
+
+
+
+### Closure는?
+
+- 클로저에 캡쳐되면 scope을 벗어나도 사용 가능(capturing Values)
+
+```swift
+if true {
+  let name = "Jason"
+  printClosure = {
+    print(name)
+  }
+}
+```
+
+
+
+# 11. 스위프트 Closure 실습 - 보강
+
+**형태**
+
+```swift
+{ (parameter) -> return type in
+	statements
+}
+```
+
+
+
+## Example 1: 매우 Simple Closure
+
+```swift
+let choSimpleClosure = {
+
+}
+
+choSimpleClosure()
+```
+
+
+
+## Example 2: 코드블록을 구현한 Closure
+
+```swift
+let choSimpleClosure = {
+	print("Hello, 클로저 하이")
+}
+
+choSimpleClosure
+```
+
+
+
+## Example 3: 인풋 파라미터를 받는 Closure
+
+```swift
+let choSimpleClosure: (String) -> Void = { name in
+	print("Hello, 클로저 하이! 나의 이름은 \(name) 입니다!")
+}
+
+choSimpleClosure("코로나가 제일 싫어")
+```
+
+
+
+## Example 4: 값을 리턴하는 Closure
+
+```swift
+let choSimpleClosure: (String) -> String = { name in
+  let message = "iOS 개발 만만세, \(name)님 경제적 자유를 얻으실 거예요!"
+  return message
+}
+
+let result = choSimpleClosure("코로나가 제일 싫어")
+print(result)
+```
+
+
+
+## Example 5: Closure를 파라미터로 받는 함수 구현
+
+```swift
+func someSimpleFunction(choSimpleClosure: () -> Void) {
+  print("함수에서 호출이 되었어요")
+  choSimpleClosure()
+}
+
+someSimpleFunction(choSimpleClosure: {
+  print("헬로 iOS from closure")
+})
+```
+
+
+
+## Example 6: Trailing Closure
+
+```swift
+func someSimpleFunction(message: String, choSimpleClosure: () -> Void) {
+  print("함수에서 호출이 되었어요. \(message)")
+  choSimpleClosure()
+}
+
+someSimpleFunction(message: "로나로나 땅땅", choSimpleClosure: {
+  print("헬로 iOS from closure")
+})
+
+// Trailing Closure: 마지막 인자가 클로저인 경우 파라미터를 생략하고 입력할 수 있다.
+// 코드적으로 인자를 줄여서 가독성을 높임
+
+someSimpleFunction(message: "트레일링 클로저") {
+  print("헬로 iOS from closure")
+}
+```
+
+
+
+
+
 
 
 

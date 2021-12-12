@@ -17,4 +17,3 @@
   - 시리즈온
 - 다크모드
 - CollectionReusableView(섹션헤더뷰)
-- 
